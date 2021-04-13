@@ -1,9 +1,14 @@
 package controller;
 
-public class controllerMain {
+import model.Logic;
+import processing.core.PApplet;
 
-	public controllerMain() {
-		// TODO Auto-generated constructor stub
+public class ControllerMain {
+	
+	private Logic logic;
+
+	public ControllerMain(PApplet app) {
+		logic = new Logic(app);
 	}
 
 }
