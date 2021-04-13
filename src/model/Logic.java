@@ -6,6 +6,12 @@ import processing.core.PApplet;
 
 public class Logic {
 
+	private Tadpole tadpole;
+	private Duck duck;
+	private MomCat momCat;
+	private MrsMouse mrsMouse;
+	private FriendMouse friendMouse;
+	
 	private PApplet app;
 	private String[] story;
 	private ArrayList<String> storyList;
@@ -14,6 +20,11 @@ public class Logic {
 		this.app = app;
 		storyList = new ArrayList<String>();
 		loadTxt();
+		duck = new Duck(app);
+		momCat = new MomCat(app);
+		tadpole = new Tadpole(app);
+		mrsMouse = new MrsMouse(app);
+		friendMouse = new FriendMouse(app);
 	}
 
 	private void loadTxt() {
@@ -27,13 +38,21 @@ public class Logic {
 			String[] arrayInfo = story[i].split(" ");
 			for (int j = 0; j < arrayInfo.length; j++) {
 				storyList.add(arrayInfo[j]);
-				System.out.println(arrayInfo[j]);
+				//System.out.println(arrayInfo[j]);
 
 			}
 
 		}
 		
 		
+	}
+	
+	public void draw() {
+		//duck.draw();
+		//momCat.draw();
+		//tadpole.draw();
+		mrsMouse.draw();
+		friendMouse.draw();
 	}
 
 }

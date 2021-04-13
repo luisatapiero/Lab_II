@@ -35,7 +35,8 @@ public class Main extends PApplet{
 	public void draw() {
 		//background(storyScreen.getImgStoryScreen());
 		//background(homeScreen.getImgHomeScreen());
-		background(finalScreen.getImgFinalScreen());
+		//background(finalScreen.getImgFinalScreen());
+		controllerMain.draw();
 	}
 
 }

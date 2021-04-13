@@ -1,9 +1,18 @@
 package model;
 
-public class Mouse {
+import processing.core.PApplet;
 
-	public Mouse() {
-		// TODO Auto-generated constructor stub
+public abstract class Mouse {
+
+	protected PApplet app;
+	
+	public Mouse(PApplet app) {
+		this.app = app;
+		
 	}
+	
+
+	protected abstract void loadImg();
+	protected abstract void draw();
 
 }
