@@ -48,6 +48,7 @@ public class Logic {
 	}
 	
 	public void draw() {
+		
 		//duck.draw();
 		//momCat.draw();
 		//tadpole.draw();
