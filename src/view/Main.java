@@ -39,6 +39,7 @@ public class Main extends PApplet{
 		switch (screenOrder) {
 		case 1:
 			background(homeScreen.getImgHomeScreen());
+			//System.out.println(mouseY);
 			break;
 		case 2:
 			background(storyScreen.getImgStoryScreen());		
@@ -60,17 +61,17 @@ public class Main extends PApplet{
 			break;
 		}
 	}
-
-
-	public int getScreenOrder() {
-		return screenOrder;
-	}
-
-
-	public void setScreenOrder(int screenOrder) {
-		this.screenOrder = screenOrder;
-	}
-
 	
+	@Override
+	public void mousePressed() {
+		if (homeScreen.clickStart()) {
+			screenOrder = 2;
+		}
+	}
+
+
+
+
+
 	
 }
