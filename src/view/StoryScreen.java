@@ -28,6 +28,13 @@ public class StoryScreen {
 			imgBosque = app.loadImage("images/bosque.png");
 		
 	}
+	
+	public boolean clickContinue() {
+		if (app.mouseX > 950 && app.mouseX < 1165 && app.mouseY > 519 && app.mouseY < 588) {
+			return true;
+		}
+		return false;
+	}
 
 	public PImage getImgStoryScreen() {
 		return imgStoryScreen;

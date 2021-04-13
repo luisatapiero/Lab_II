@@ -42,10 +42,11 @@ public class Main extends PApplet{
 			//System.out.println(mouseY);
 			break;
 		case 2:
-			background(storyScreen.getImgStoryScreen());		
+			background(storyScreen.getImgStoryScreen());
 			break;
 		case 3:
 			background(storyScreen.getImgCasa());
+			
 			break;
 		case 4:
 			background(storyScreen.getImgPuerta());
@@ -64,9 +65,46 @@ public class Main extends PApplet{
 	
 	@Override
 	public void mousePressed() {
-		if (homeScreen.clickStart()) {
-			screenOrder = 2;
+		
+		switch (screenOrder) {
+		case 1:
+			if (homeScreen.clickStart()) {
+				screenOrder = 2;
+			}
+			break;
+		
+		case 2:
+			if (storyScreen.clickContinue()) {
+				screenOrder = 6;
+			}
+			break;
+		
+		case 3:
+			
+			break;
+		
+		case 4:
+			
+			break;
+		case 5:
+			
+			break;
+			
+		case 6:
+			if (finalScreen.clickReadAgain()) {
+				screenOrder = 1;
+			}
+			
+			finalScreen.clickExit();
+			break;
+		
+
+		default:
+			break;
 		}
+		
+		
+		
 	}
 
 
