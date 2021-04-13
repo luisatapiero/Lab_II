@@ -8,8 +8,9 @@ public class Main extends PApplet{
 	private HomeScreen homeScreen;
 	private StoryScreen storyScreen;
 	private FinalScreen finalScreen;
-	
 	private ControllerMain controllerMain;
+	
+	private int screenOrder;
 	
 
 	public static void main(String[] args) {
@@ -25,14 +26,16 @@ public class Main extends PApplet{
 	
 	public void setup() {
 		controllerMain = new ControllerMain(this);
-		homeScreen = new HomeScreen();
-		storyScreen = new StoryScreen();
-		finalScreen = new FinalScreen();
+		homeScreen = new HomeScreen(this);
+		storyScreen = new StoryScreen(this);
+		finalScreen = new FinalScreen(this);
 	}
 	
 	
 	public void draw() {
-		
+		//background(storyScreen.getImgStoryScreen());
+		//background(homeScreen.getImgHomeScreen());
+		background(finalScreen.getImgFinalScreen());
 	}
 
 }

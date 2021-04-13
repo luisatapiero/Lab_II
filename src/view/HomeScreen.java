@@ -1,9 +1,24 @@
 package view;
 
-public class HomeScreen {
+import processing.core.PApplet;
+import processing.core.PImage;
 
-	public HomeScreen() {
-		// TODO Auto-generated constructor stub
+public class HomeScreen {
+	
+	private PApplet app;
+	PImage imgHomeScreen;
+
+	public HomeScreen(PApplet app) {
+		this.app = app;
+		loadBackground();
+	}
+	
+	public void loadBackground() {
+		imgHomeScreen = app.loadImage("images/HomeScreen.png");
+	}
+
+	public PImage getImgHomeScreen() {
+		return imgHomeScreen;
 	}
 
 }
