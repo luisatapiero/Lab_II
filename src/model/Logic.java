@@ -26,8 +26,8 @@ public class Logic {
 		duck = new Duck(app);
 		momCat = new MomCat(app);
 		tadpole = new Tadpole(app);
-		mrsMouse = new MrsMouse(app);
-		friendMouse = new FriendMouse(app);
+		mrsMouse = new MrsMouse(0, 682, app);
+		friendMouse = new FriendMouse(0, 682, app);
 		hat = new Hat(app);
 		guitar = new Guitar(236, 419, app);
 	}
@@ -59,22 +59,26 @@ public class Logic {
 	}
 
 	public void firstScreen() {
-		
+
 		switch (numInteraction) {
 
 		case 0:
 			tadpole.tadpoleOriginal();
+			friendMouse.mouseOriginal(550, 247);
+			mrsMouse.mouseOriginal(775, 247);
 			guitar.glowGuitar(236, 440);
-
 			changeSizeGuitar();
-			
 
 			break;
 
 		case 1:
+
 			tadpole.tadpoleOriginal();
 			guitar.originalGuitar(236, 440);
 			guitar.drawMusic();
+			friendMouse.mouseGlowing(550, 247);
+			mrsMouse.mouseGlowing(775, 247);
+			System.out.println(app.mouseY);
 
 			break;
 
@@ -95,7 +99,6 @@ public class Logic {
 
 		}
 
-		
 	}
 
 	public void clickGuitar() {
@@ -103,7 +106,6 @@ public class Logic {
 				&& app.mouseY < guitar.getPosY() + guitar.getSizeY()
 				&& app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
 			numInteraction = 1;
-			
 
 		}
 
