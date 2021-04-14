@@ -81,8 +81,9 @@ public class Main extends PApplet {
 			/*if (controllerMain.changeSizeGuitar()) {
 				screenOrder = 3;
 			}*/
+			controllerMain.clickGuitar();
+			controllerMain.clickMouses();
 			
-			controllerMain.clickElements();
 			
 			break;
 

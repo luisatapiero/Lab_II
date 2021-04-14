@@ -78,8 +78,10 @@ public class Logic {
 			guitar.drawMusic();
 			friendMouse.mouseGlowing(550, 247);
 			mrsMouse.mouseGlowing(775, 247);
-			System.out.println(app.mouseY);
-
+			System.out.println("x"+mrsMouse.getPosX());
+			System.out.println("y"+mrsMouse.getPosY());
+			changeSizeMouse();
+			
 			break;
 
 		case 2:
@@ -91,7 +93,7 @@ public class Logic {
 		}
 	}
 
-	public void changeSizeGuitar() {
+	private void changeSizeGuitar() {
 		if (app.mouseX < guitar.getPosX() + guitar.getSizeX() && app.mouseX > guitar.getPosX() - guitar.getSizeX()
 				&& app.mouseY < guitar.getPosY() + guitar.getSizeY()
 				&& app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
@@ -106,6 +108,24 @@ public class Logic {
 				&& app.mouseY < guitar.getPosY() + guitar.getSizeY()
 				&& app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
 			numInteraction = 1;
+
+		}
+
+	}
+
+	private void changeSizeMouse() {
+
+		if (app.mouseX < 1030 && app.mouseX > 294 && app.mouseY < 682 && app.mouseY > 294) {
+			mrsMouse.setShow(true);
+			friendMouse.setShow(true);
+
+		}
+
+	}
+
+	public void clickMouses() {
+		if (app.mouseX < 1030 && app.mouseX > 294 && app.mouseY < 682 && app.mouseY > 294) {
+			numInteraction = 2;
 
 		}
 

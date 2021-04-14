@@ -34,9 +34,15 @@ public class FriendMouse extends Mouse {
 
 	@Override
 	protected void mouseGlowing(int posX, int posY) {
-		app.image(imgFriendGlow, posX, posY);
-
-	}
+			if (show) {
+				app.image(imgFriendGlow, posX, posY,(float) (sizeX*1.3), (float) (sizeY*1.2));
+			}else {
+				app.image(imgFriendGlow, posX, posY);
+			}
+			
+			show = false;
+		}
+		
 
 	@Override
 	protected void mouseDancing(int posX, int posY) {

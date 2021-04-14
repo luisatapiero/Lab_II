@@ -16,8 +16,12 @@ public class ControllerMain {
 		
 	}
 
-	public void clickElements() {
+	public void clickGuitar() {
 		logic.clickGuitar();
+	}
+	
+	public void clickMouses() {
+		logic.clickMouses();
 	}
 
 
