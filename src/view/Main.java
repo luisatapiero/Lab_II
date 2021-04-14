@@ -26,7 +26,7 @@ public class Main extends PApplet {
 		homeScreen = new HomeScreen(this);
 		storyScreen = new StoryScreen(this);
 		finalScreen = new FinalScreen(this);
-		screenOrder = 3;
+		screenOrder = 6;
 	}
 
 	public void draw() {
@@ -44,7 +44,7 @@ public class Main extends PApplet {
 		case 3:
 			background(storyScreen.getImgCasa());
 			controllerMain.firstScreen();
-
+			//System.out.println(controllerMain.getNumInteraction());
 			break;
 		case 4:
 			background(storyScreen.getImgPuerta());
@@ -81,8 +81,20 @@ public class Main extends PApplet {
 			/*if (controllerMain.changeSizeGuitar()) {
 				screenOrder = 3;
 			}*/
-			controllerMain.clickGuitar();
-			controllerMain.clickMouses();
+			
+				if (controllerMain.getNumInteraction() == 0) {
+					controllerMain.clickGuitar();
+				}
+				
+				if (controllerMain.getNumInteraction() == 1) {
+					controllerMain.clickMouses();
+				}
+	
+
+
+		
+			
+			
 			
 			
 			break;
@@ -95,10 +107,11 @@ public class Main extends PApplet {
 			break;
 
 		case 6:
+			controllerMain.saveText();
 			if (finalScreen.clickReadAgain()) {
 				screenOrder = 1;
 			}
-
+			
 			finalScreen.clickExit();
 			break;
 
