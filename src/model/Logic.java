@@ -11,7 +11,9 @@ public class Logic {
 	private MomCat momCat;
 	private MrsMouse mrsMouse;
 	private FriendMouse friendMouse;
-	
+	private Hat hat;
+	private Guitar guitar;
+
 	private PApplet app;
 	private String[] story;
 	private ArrayList<String> storyList;
@@ -25,6 +27,8 @@ public class Logic {
 		tadpole = new Tadpole(app);
 		mrsMouse = new MrsMouse(app);
 		friendMouse = new FriendMouse(app);
+		hat = new Hat(app);
+		guitar = new Guitar(236, 419, app);
 	}
 
 	private void loadTxt() {
@@ -38,22 +42,49 @@ public class Logic {
 			String[] arrayInfo = story[i].split(" ");
 			for (int j = 0; j < arrayInfo.length; j++) {
 				storyList.add(arrayInfo[j]);
-				//System.out.println(arrayInfo[j]);
-
 			}
 
 		}
-		
-		
+
 	}
-	
+
 	public void draw() {
-		
-		//duck.draw();
-		//momCat.draw();
-		//tadpole.draw();
-		mrsMouse.draw();
-		friendMouse.draw();
+
+		// duck.draw();
+		// momCat.draw();
+		// tadpole.draw();
+		// mrsMouse.draw();
+		// friendMouse.draw();
+	}
+
+	public void firstScreen() {
+		int numInteraction = 0;
+		switch (numInteraction) {
+
+		case 0:
+			tadpole.tadpoleOriginal();
+			guitar.glowGuitar(236, 440);
+			
+			if (app.mouseX < guitar.getPosX() + guitar.getSizeX() && app.mouseX > guitar.getPosX() - guitar.getSizeX() 
+			&& app.mouseY < guitar.getPosY() + guitar.getSizeY() && app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
+				guitar.setShow(true);
+			
+				}
+			
+			
+				break;
+
+		case 1:
+
+			break;
+
+		case 2:
+
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }

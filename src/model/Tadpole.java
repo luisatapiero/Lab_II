@@ -10,30 +10,31 @@ public class Tadpole {
 	private PImage imgScaredTadpole;
 	private PImage imgRunningTadpole;
 	
-	private Hat hat;
-	private Guitar guitar;
+
 
 	public Tadpole(PApplet app) {
 		this.app = app;
 		
-		hat = new Hat(app);
-		guitar = new Guitar(app);
+		
 	}
 	
-	private void loadImg() {
+
+
+	public void tadpoleOriginal() {
 		imgTadpole = app.loadImage("images/Tadpole_Original.png");
-		app.image(imgTadpole, 0, 0);
-		imgScaredTadpole = app.loadImage("images/Tadpole_Scared.png");
-		app.image(imgScaredTadpole, 100, 100);
-		imgRunningTadpole = app.loadImage("images/Tadpole_Running.png");
-		app.image(imgRunningTadpole, 0, 0);
+		app.image(imgTadpole, 226, 209);
+		
 	}
-
-
-	public void draw() {
-		loadImg();
-		hat.draw();
-		guitar.draw();
+	
+	public void tadpoleScared() {
+		imgScaredTadpole = app.loadImage("images/Tadpole_Scared.png");
+		app.image(imgScaredTadpole, 226, 209);
+		
+	}
+	
+	public void tadpoleRunning() {
+		imgRunningTadpole = app.loadImage("images/Tadpole_Running.png");
+		app.image(imgRunningTadpole, 226, 209);
 		
 	}
 

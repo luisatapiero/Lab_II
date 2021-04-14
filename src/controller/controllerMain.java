@@ -11,8 +11,8 @@ public class ControllerMain {
 		logic = new Logic(app);
 	}
 	
-	public void draw() {
-		logic.draw();
+	public void firstScreen() {
+		logic.firstScreen();
 	}
 
 }
