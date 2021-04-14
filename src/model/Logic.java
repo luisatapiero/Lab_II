@@ -143,15 +143,14 @@ public class Logic {
 		newText = app.createWriter("./TXT/newStory.txt");
 
 		for (int i = 0; i < storyList.size(); i++) {
-			if (storyList.get(i).equals("music") || storyList.get(i).equals("dancing") || storyList.get(i).equals("Cat")
+			if (storyList.get(i).equals("music") || storyList.get(i).equals("dancing,") || storyList.get(i).equals("Cat")
 					|| storyList.get(i).equals("Rinrin") || storyList.get(i).equals("hat")) {
 				newText.println(storyList.get(i).toUpperCase());
 			} else {
 				newText.println(storyList.get(i));
 
-				break;
 			}
-
+			System.out.println(storyList.get(i));
 		}
 		newText.flush();
 		newText.close();
