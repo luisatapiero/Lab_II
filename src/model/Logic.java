@@ -17,6 +17,7 @@ public class Logic {
 	private PApplet app;
 	private String[] story;
 	private ArrayList<String> storyList;
+	private int numInteraction = 0;
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -58,23 +59,22 @@ public class Logic {
 	}
 
 	public void firstScreen() {
-		int numInteraction = 0;
+		
 		switch (numInteraction) {
 
 		case 0:
 			tadpole.tadpoleOriginal();
 			guitar.glowGuitar(236, 440);
+
+			changeSizeGuitar();
 			
-			if (app.mouseX < guitar.getPosX() + guitar.getSizeX() && app.mouseX > guitar.getPosX() - guitar.getSizeX() 
-			&& app.mouseY < guitar.getPosY() + guitar.getSizeY() && app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
-				guitar.setShow(true);
-			
-				}
-			
-			
-				break;
+
+			break;
 
 		case 1:
+			tadpole.tadpoleOriginal();
+			guitar.originalGuitar(236, 440);
+			guitar.drawMusic();
 
 			break;
 
@@ -85,6 +85,28 @@ public class Logic {
 		default:
 			break;
 		}
+	}
+
+	public void changeSizeGuitar() {
+		if (app.mouseX < guitar.getPosX() + guitar.getSizeX() && app.mouseX > guitar.getPosX() - guitar.getSizeX()
+				&& app.mouseY < guitar.getPosY() + guitar.getSizeY()
+				&& app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
+			guitar.setShow(true);
+
+		}
+
+		
+	}
+
+	public void clickGuitar() {
+		if (app.mouseX < guitar.getPosX() + guitar.getSizeX() && app.mouseX > guitar.getPosX() - guitar.getSizeX()
+				&& app.mouseY < guitar.getPosY() + guitar.getSizeY()
+				&& app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
+			numInteraction = 1;
+			
+
+		}
+
 	}
 
 }

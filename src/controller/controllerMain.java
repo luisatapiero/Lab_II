@@ -13,6 +13,15 @@ public class ControllerMain {
 	
 	public void firstScreen() {
 		logic.firstScreen();
+		
 	}
+
+	public void clickElements() {
+		logic.clickGuitar();
+	}
+
+
+
+
 
 }

@@ -8,6 +8,7 @@ public class Guitar {
 	private PApplet app;
 	private PImage imgGuitar;
 	private PImage imgGuitarGlow;
+	private PImage imgMusicNotes;
 
 	private int posX;
 	private int posY;
@@ -29,6 +30,7 @@ public class Guitar {
 	private void loadImg() {
 		imgGuitarGlow = app.loadImage("images/Guitar_Glow.png");
 		imgGuitar = app.loadImage("images/Guitar.png");
+		imgMusicNotes = app.loadImage("images/MusicNotes.png");
 	}
 
 	public void glowGuitar(int posX, int posY) {
@@ -49,6 +51,9 @@ public class Guitar {
 		
 	}
  
+	public void drawMusic() {
+		app.image(imgMusicNotes, 205, 95);
+	}
 	/*public void resizeImg(int posX, int posY) {
 		show = false;
 		app.image(imgGuitar, posX, posY,sizeX, sizeY);
