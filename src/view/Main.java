@@ -26,7 +26,7 @@ public class Main extends PApplet {
 		homeScreen = new HomeScreen(this);
 		storyScreen = new StoryScreen(this);
 		finalScreen = new FinalScreen(this);
-		screenOrder = 6;
+		screenOrder = 3;
 	}
 
 	public void draw() {
@@ -81,8 +81,8 @@ public class Main extends PApplet {
 			/*if (controllerMain.changeSizeGuitar()) {
 				screenOrder = 3;
 			}*/
-			
 				if (controllerMain.getNumInteraction() == 0) {
+					System.out.println(controllerMain.getNumInteraction());
 					controllerMain.clickGuitar();
 				}
 				

@@ -20,6 +20,10 @@ public class Logic {
 	private ArrayList<String> storyList;
 	private int numInteraction = 0;
 	PrintWriter newText;
+	
+	private boolean guitarClickable;
+	private boolean mousesClickable;
+	
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -33,6 +37,9 @@ public class Logic {
 		friendMouse = new FriendMouse(0, 682, app);
 		hat = new Hat(app);
 		guitar = new Guitar(236, 419, app);
+		guitarClickable = true;
+		mousesClickable = false;
+
 	}
 
 	private void loadTxt() {
@@ -63,10 +70,12 @@ public class Logic {
 			guitar.glowGuitar(236, 440);
 			changeSizeGuitar();
 
+
 			break;
 
 		case 1:
-
+			guitarClickable = false;
+			mousesClickable = true;
 			tadpole.tadpoleOriginal();
 			guitar.originalGuitar(236, 440);
 			guitar.drawMusic();
@@ -82,13 +91,12 @@ public class Logic {
 			guitar.drawMusic();
 			friendMouse.mouseDancing(550, 247);
 			mrsMouse.mouseDancing(775, 247);
+			
 
 			break;
 
 		case 3:
-			System.out.println("por fin sirve");
-			friendMouse.mouseDancing(550, 247);
-			mrsMouse.mouseDancing(775, 247);
+			
 			break;
 
 		default:
@@ -110,7 +118,12 @@ public class Logic {
 		if (app.mouseX < guitar.getPosX() + guitar.getSizeX() && app.mouseX > guitar.getPosX() - guitar.getSizeX()
 				&& app.mouseY < guitar.getPosY() + guitar.getSizeY()
 				&& app.mouseY > guitar.getPosY() - guitar.getSizeY()) {
-			numInteraction = 1;
+			if (guitarClickable) {
+				numInteraction = 1;
+			}
+				
+
+			
 
 		}
 
@@ -121,19 +134,19 @@ public class Logic {
 		if (app.mouseX < 1030 && app.mouseX > 660 && app.mouseY < 682 && app.mouseY > 294) {
 			mrsMouse.setShow(true);
 			friendMouse.setShow(true);
-			System.out.println(app.mouseX);
 
 		}
 
 	}
 
 	public void clickMouses() {
-		if (numInteraction == 2) {
+
 			if (app.mouseX < 1030 && app.mouseX > 294 && app.mouseY < 682 && app.mouseY > 294) {
-				// numInteraction = 2;
-				System.out.println(numInteraction);
-				numInteraction = 2;
-			}
+				if (mousesClickable && guitarClickable == false) {
+					numInteraction = 2;
+				}
+				
+
 
 		}
 
@@ -150,7 +163,6 @@ public class Logic {
 				newText.println(storyList.get(i));
 
 			}
-			System.out.println(storyList.get(i));
 		}
 		newText.flush();
 		newText.close();
@@ -163,5 +175,8 @@ public class Logic {
 	public void setNumInteraction(int numInteraction) {
 		this.numInteraction = numInteraction;
 	}
+
+
+	
 
 }
