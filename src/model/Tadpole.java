@@ -40,7 +40,7 @@ public class Tadpole {
 
 	public void tadpoleScared(int posX, int posY) {
 
-		app.image(imgScaredTadpole, 226, 209);
+		app.image(imgScaredTadpole, posX, posY);
 
 	}
 

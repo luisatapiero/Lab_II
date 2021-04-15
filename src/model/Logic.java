@@ -21,6 +21,7 @@ public class Logic {
 	private int numInteraction = 0;
 	private int num5 = 1;
 	private int num2 = 1;
+	private int num3 = 1;
 	PrintWriter newText;
 
 	private boolean guitarClickable;
@@ -38,7 +39,7 @@ public class Logic {
 		tadpole = new Tadpole(226, 209, app);
 		mrsMouse = new MrsMouse(0, 682, app);
 		friendMouse = new FriendMouse(0, 682, app);
-		hat = new Hat(app);
+		hat = new Hat(920, 0, app);
 		guitar = new Guitar(236, 419, app);
 		guitarClickable = true;
 		mousesClickable = false;
@@ -119,12 +120,22 @@ public class Logic {
 
 			break;
 
-		case 3:
-
-			break;
-
 		default:
 			break;
+		}
+	}
+
+	public void secondScreen() {
+		if (num3 == 1) {
+			tadpole.tadpoleScared(0, 209);
+			hat.hatOriginal(770, 160);
+			hat.hatOpacity();
+		}
+
+		if (num3 == 2) {
+			tadpole.tadpoleScared(0, 209);
+			hat.hatOriginal(35, 130);
+			
 		}
 	}
 
@@ -201,6 +212,19 @@ public class Logic {
 
 		} else {
 			momCat.setCatDrag(false);
+		}
+
+	}
+
+	public void moveHat() {
+
+		if (app.mouseX < 1074 && app.mouseX > 826 && app.mouseY < 430 && app.mouseY > 254) {
+			System.out.println("dragHat");
+
+			num3 = 2;
+
+		} else {
+			// momCat.setCatDrag(false);
 		}
 
 	}

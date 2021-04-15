@@ -12,6 +12,8 @@ public class Main extends PApplet {
 
 	private int screenOrder;
 	private boolean finalOne;
+	private boolean doorOne;
+	private boolean forestOne;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -27,8 +29,9 @@ public class Main extends PApplet {
 		homeScreen = new HomeScreen(this);
 		storyScreen = new StoryScreen(this);
 		finalScreen = new FinalScreen(this);
-		screenOrder = 3;
+		screenOrder = 1;
 		finalOne = false;
+		doorOne = false;
 	}
 
 	public void draw() {
@@ -47,12 +50,20 @@ public class Main extends PApplet {
 
 				background(storyScreen.getImgCasa());
 				controllerMain.firstScreen();
+				
+			if (frameCount == 80 && doorOne) {
+					screenOrder = 4;
+				}
 
 		
 			// System.out.println(controllerMain.getNumInteraction());
 			break;
 		case 4:
 			background(storyScreen.getImgPuerta());
+			controllerMain.secondScreen();
+			if (frameCount == 60 && forestOne) {
+				screenOrder = 5;
+			}
 			
 			break;
 		case 5:
@@ -102,18 +113,25 @@ public class Main extends PApplet {
 
 			if (controllerMain.getNumInteraction() == 2) {
 				controllerMain.catDrag();
+				frameRate(20);
+				frameCount = 0;
+				doorOne = true;
 			}
 
 			break;
 
 		case 4:
+			
+			controllerMain.moveHat();
+			frameRate(80);
+			frameCount = 0;
+			forestOne = true;
 
 			break;
 		case 5:
 		
 			controllerMain.clickTadpole();
-			System.out.println("clic");
-			frameRate(60);
+			frameRate(80);
 			frameCount = 0;
 			finalOne = true;
 			

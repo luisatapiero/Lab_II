@@ -8,22 +8,30 @@ public class Hat {
 	private PApplet app;
 	private PImage imgHat;
 	private PImage imgHatOpacity;
+	private int posX;
+	private int posY;
 
-	public Hat(PApplet app) {
+	public Hat(int posX, int posY, PApplet app) {
 		this.app = app;
+		loadImg();
 	}
 
 	private void loadImg() {
 		imgHat = app.loadImage("images/Hat.png");
-		app.image(imgHat, 200, 200);
 		imgHatOpacity = app.loadImage("images/Hat_Opacity.png");
-		app.image(imgHatOpacity, 100, 100);
+	
 	}
 
 
-	public void draw() {
-		loadImg();
-		
+	public void hatOriginal(int posX, int posY) {
+		app.image(imgHat, posX, posY);
 	}
 	
-}
+	public void hatOpacity() {
+		app.image(imgHatOpacity, 35, 130);
+	}
+	
+	
+		
+	}
+
