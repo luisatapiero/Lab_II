@@ -14,6 +14,7 @@ public class Main extends PApplet {
 	private boolean finalOne;
 	private boolean doorOne;
 	private boolean forestOne;
+	public static boolean repeat;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -32,6 +33,7 @@ public class Main extends PApplet {
 		screenOrder = 1;
 		finalOne = false;
 		doorOne = false;
+		repeat = false;
 	}
 
 	public void draw() {
@@ -142,6 +144,8 @@ public class Main extends PApplet {
 			controllerMain.saveText();
 			if (finalScreen.clickReadAgain()) {
 				screenOrder = 1;
+				repeat = true;			
+
 			}
 
 			finalScreen.clickExit();
@@ -152,5 +156,7 @@ public class Main extends PApplet {
 		}
 
 	}
+	
+	
 
 }

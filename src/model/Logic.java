@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import view.Main;
 
 public class Logic {
 
@@ -66,6 +67,16 @@ public class Logic {
 
 	public void firstScreen() {
 
+		if (Main.repeat) {
+			numInteraction = 0;
+			guitarClickable = true;
+			mousesClickable = false;
+			tadpoleClickable = false;
+			num5 = 1;
+			num2 = 1;
+			num3 = 1;
+		}
+
 		switch (numInteraction) {
 
 		case 0:
@@ -94,7 +105,6 @@ public class Logic {
 			if (num2 == 1) {
 				guitarClickable = false;
 				mousesClickable = false;
-				// momCat.setCatDrag(true);
 				tadpole.tadpoleOriginal(226, 209);
 				guitar.originalGuitar(236, 440);
 				guitar.drawMusic();
@@ -102,7 +112,6 @@ public class Logic {
 				mrsMouse.mouseDancing(775, 247);
 				momCat.catOriginal(920, 0);
 				momCat.catOpacity();
-				System.out.println(momCat.isCatDrag());
 				if (momCat.isCatDrag()) {
 					momCat.setPosX(app.mouseX);
 					momCat.setPosY(app.mouseY);
@@ -135,7 +144,7 @@ public class Logic {
 		if (num3 == 2) {
 			tadpole.tadpoleScared(0, 209);
 			hat.hatOriginal(35, 130);
-			
+
 		}
 	}
 
@@ -205,8 +214,6 @@ public class Logic {
 			if (guitarClickable == false && mousesClickable == false) {
 				momCat.setCatDrag(true);
 				momCat.catDrag();
-				System.out.println("drag");
-
 				num2 = 2;
 			}
 
@@ -219,8 +226,6 @@ public class Logic {
 	public void moveHat() {
 
 		if (app.mouseX < 1074 && app.mouseX > 826 && app.mouseY < 430 && app.mouseY > 254) {
-			System.out.println("dragHat");
-
 			num3 = 2;
 
 		} else {
