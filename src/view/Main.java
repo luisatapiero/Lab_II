@@ -11,6 +11,7 @@ public class Main extends PApplet {
 	private ControllerMain controllerMain;
 
 	private int screenOrder;
+	private boolean finalOne;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -27,6 +28,7 @@ public class Main extends PApplet {
 		storyScreen = new StoryScreen(this);
 		finalScreen = new FinalScreen(this);
 		screenOrder = 5;
+		finalOne = false;
 	}
 
 	public void draw() {
@@ -56,6 +58,10 @@ public class Main extends PApplet {
 		case 5:
 			background(storyScreen.getImgBosque());
 			controllerMain.fifthScreen();
+			
+			if (frameCount == 60 && finalOne) {
+				screenOrder = 6;
+			}
 			
 			break;
 		case 6:
@@ -107,6 +113,10 @@ public class Main extends PApplet {
 		
 			controllerMain.clickTadpole();
 			System.out.println("clic");
+			frameRate(60);
+			frameCount = 0;
+			finalOne = true;
+			
 			
 			break;
 
