@@ -27,7 +27,7 @@ public class Main extends PApplet {
 		homeScreen = new HomeScreen(this);
 		storyScreen = new StoryScreen(this);
 		finalScreen = new FinalScreen(this);
-		screenOrder = 5;
+		screenOrder = 3;
 		finalOne = false;
 	}
 
@@ -44,10 +44,10 @@ public class Main extends PApplet {
 			background(storyScreen.getImgStoryScreen());
 			break;
 		case 3:
-			if (controllerMain.getNumInteraction() == 2) {
+
 				background(storyScreen.getImgCasa());
 				controllerMain.firstScreen();
-			}
+
 		
 			// System.out.println(controllerMain.getNumInteraction());
 			break;

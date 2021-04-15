@@ -20,6 +20,7 @@ public class Logic {
 	private ArrayList<String> storyList;
 	private int numInteraction = 0;
 	private int num5 = 1;
+	private int num2 = 1;
 	PrintWriter newText;
 
 	private boolean guitarClickable;
@@ -88,16 +89,33 @@ public class Logic {
 			break;
 
 		case 2:
-			guitarClickable = false;
-			mousesClickable = false;
-			momCat.setCatDrag(true);
-			tadpole.tadpoleOriginal(226, 209);
-			guitar.originalGuitar(236, 440);
-			guitar.drawMusic();
-			friendMouse.mouseDancing(550, 247);
-			mrsMouse.mouseDancing(775, 247);
-			momCat.catOriginal(900, 0);
-			momCat.catOpacity();
+
+			if (num2 == 1) {
+				guitarClickable = false;
+				mousesClickable = false;
+				// momCat.setCatDrag(true);
+				tadpole.tadpoleOriginal(226, 209);
+				guitar.originalGuitar(236, 440);
+				guitar.drawMusic();
+				friendMouse.mouseDancing(550, 247);
+				mrsMouse.mouseDancing(775, 247);
+				momCat.catOriginal(920, 0);
+				momCat.catOpacity();
+				System.out.println(momCat.isCatDrag());
+				if (momCat.isCatDrag()) {
+					momCat.setPosX(app.mouseX);
+					momCat.setPosY(app.mouseY);
+				}
+			}
+
+			if (num2 == 2) {
+				tadpole.tadpoleOriginal(226, 209);
+				guitar.originalGuitar(236, 440);
+				guitar.drawMusic();
+				friendMouse.mouseDancing(550, 247);
+				mrsMouse.mouseDancing(775, 247);
+				momCat.catOriginal(790, 0);
+			}
 
 			break;
 
@@ -172,16 +190,17 @@ public class Logic {
 
 	public void dragCat() {
 
-		if (app.mouseX < 1105 && app.mouseX > 927 && app.mouseY < 720 && app.mouseY > 0) {
-			if (momCat.isCatDrag() && guitarClickable == false && mousesClickable == false) {
-
+		if (app.mouseX < 1200 && app.mouseX > 1000 && app.mouseY < 720 && app.mouseY > 0) {
+			if (guitarClickable == false && mousesClickable == false) {
+				momCat.setCatDrag(true);
 				momCat.catDrag();
 				System.out.println("drag");
-				momCat.setPosX(app.mouseX);
-				momCat.setPosY(app.mouseY);
-				// numInteraction = 3;
+
+				num2 = 2;
 			}
 
+		} else {
+			momCat.setCatDrag(false);
 		}
 
 	}

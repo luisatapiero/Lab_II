@@ -10,7 +10,6 @@ public class StoryScreen {
 	PImage imgCasa;
 	PImage imgPuerta;
 	PImage imgBosque;
-	private int order;
 
 	public StoryScreen(PApplet app) {
 		this.app = app;

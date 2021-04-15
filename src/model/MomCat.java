@@ -18,6 +18,8 @@ public class MomCat {
 		this.app = app;
 		loadImg();
 		catDrag = false;
+		posX = 790;
+		posY = 0;
 	}
 
 	private void loadImg() {
@@ -39,6 +41,7 @@ public class MomCat {
 	}
 	
 	public void catDrag() {
+
 		if (catDrag) {
 			posX = app.mouseX;
 			posY = app.mouseY;
