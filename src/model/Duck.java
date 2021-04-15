@@ -11,18 +11,19 @@ public class Duck {
 
 	public Duck(PApplet app) {
 		this.app = app;
+		loadImg();
 		
 	}
 	
 	private void loadImg() {
 		imgDuck = app.loadImage("images/Duck.png");
-		app.image(imgDuck, 200, 200);
+		
 	}
 
 
-	public void draw() {
-		loadImg();
+	public void duckShow() {
 		
+		app.image(imgDuck, 0, 260);
 	}
 
 	

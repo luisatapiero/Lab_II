@@ -26,12 +26,12 @@ public class Main extends PApplet {
 		homeScreen = new HomeScreen(this);
 		storyScreen = new StoryScreen(this);
 		finalScreen = new FinalScreen(this);
-		screenOrder = 3;
+		screenOrder = 5;
 	}
 
 	public void draw() {
-		//controllerMain.draw();
-		//imageMode(CENTER);
+		// controllerMain.draw();
+		// imageMode(CENTER);
 
 		switch (screenOrder) {
 		case 1:
@@ -42,15 +42,21 @@ public class Main extends PApplet {
 			background(storyScreen.getImgStoryScreen());
 			break;
 		case 3:
-			background(storyScreen.getImgCasa());
-			controllerMain.firstScreen();
-			//System.out.println(controllerMain.getNumInteraction());
+			if (controllerMain.getNumInteraction() == 2) {
+				background(storyScreen.getImgCasa());
+				controllerMain.firstScreen();
+			}
+		
+			// System.out.println(controllerMain.getNumInteraction());
 			break;
 		case 4:
 			background(storyScreen.getImgPuerta());
+			
 			break;
 		case 5:
 			background(storyScreen.getImgBosque());
+			controllerMain.fifthScreen();
+			
 			break;
 		case 6:
 			background(finalScreen.getImgFinalScreen());
@@ -78,32 +84,30 @@ public class Main extends PApplet {
 			break;
 
 		case 3:
-			/*if (controllerMain.changeSizeGuitar()) {
-				screenOrder = 3;
-			}*/
-				if (controllerMain.getNumInteraction() == 0) {
-					System.out.println(controllerMain.getNumInteraction());
-					controllerMain.clickGuitar();
-				}
-				
-				if (controllerMain.getNumInteraction() == 1) {
-					controllerMain.clickMouses();
-				}
-	
+			
+			if (controllerMain.getNumInteraction() == 0) {
+				System.out.println(controllerMain.getNumInteraction());
+				controllerMain.clickGuitar();
+			}
 
+			if (controllerMain.getNumInteraction() == 1) {
+				controllerMain.clickMouses();
+			}
 
-		
-			
-			
-			
-			
+			if (controllerMain.getNumInteraction() == 2) {
+				controllerMain.catDrag();
+			}
+
 			break;
 
 		case 4:
 
 			break;
 		case 5:
-
+		
+			controllerMain.clickTadpole();
+			System.out.println("clic");
+			
 			break;
 
 		case 6:
@@ -111,7 +115,7 @@ public class Main extends PApplet {
 			if (finalScreen.clickReadAgain()) {
 				screenOrder = 1;
 			}
-			
+
 			finalScreen.clickExit();
 			break;
 

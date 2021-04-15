@@ -19,26 +19,29 @@ public class Logic {
 	private String[] story;
 	private ArrayList<String> storyList;
 	private int numInteraction = 0;
+	private int num5 = 1;
 	PrintWriter newText;
-	
+
 	private boolean guitarClickable;
 	private boolean mousesClickable;
-	
+	private boolean tadpoleClickable;
+	private boolean catDragged;
 
 	public Logic(PApplet app) {
 		this.app = app;
 		storyList = new ArrayList<String>();
 		loadTxt();
-		
+
 		duck = new Duck(app);
 		momCat = new MomCat(app);
-		tadpole = new Tadpole(app);
+		tadpole = new Tadpole(226, 209, app);
 		mrsMouse = new MrsMouse(0, 682, app);
 		friendMouse = new FriendMouse(0, 682, app);
 		hat = new Hat(app);
 		guitar = new Guitar(236, 419, app);
 		guitarClickable = true;
 		mousesClickable = false;
+		tadpoleClickable = false;
 
 	}
 
@@ -64,19 +67,18 @@ public class Logic {
 		switch (numInteraction) {
 
 		case 0:
-			tadpole.tadpoleOriginal();
+			tadpole.tadpoleOriginal(226, 209);
 			friendMouse.mouseOriginal(550, 247);
 			mrsMouse.mouseOriginal(775, 247);
 			guitar.glowGuitar(236, 440);
 			changeSizeGuitar();
-
 
 			break;
 
 		case 1:
 			guitarClickable = false;
 			mousesClickable = true;
-			tadpole.tadpoleOriginal();
+			tadpole.tadpoleOriginal(226, 209);
 			guitar.originalGuitar(236, 440);
 			guitar.drawMusic();
 			friendMouse.mouseGlowing(550, 247);
@@ -86,22 +88,43 @@ public class Logic {
 			break;
 
 		case 2:
-			tadpole.tadpoleOriginal();
+			guitarClickable = false;
+			mousesClickable = false;
+			momCat.setCatDrag(true);
+			tadpole.tadpoleOriginal(226, 209);
 			guitar.originalGuitar(236, 440);
 			guitar.drawMusic();
 			friendMouse.mouseDancing(550, 247);
 			mrsMouse.mouseDancing(775, 247);
-			
+			momCat.catOriginal(900, 0);
+			momCat.catOpacity();
 
 			break;
 
 		case 3:
-			
+
 			break;
 
 		default:
 			break;
 		}
+	}
+
+	public void fifthScreen() {
+		tadpoleClickable = true;
+		if (num5 == 1) {
+			tadpole.tadpoleRunning(900, 350);
+			duck.duckShow();
+			changeSizeTadpole();
+		} else if (num5 == 2) {
+			tadpole.tadpoleRunning(500, 200);
+			duck.duckShow();
+			num5 = 3;
+		} else if (num5 == 3) {
+			tadpole.tadpoleRunning(350, 300);
+			duck.duckShow();
+		}
+
 	}
 
 	private void changeSizeGuitar() {
@@ -121,9 +144,6 @@ public class Logic {
 			if (guitarClickable) {
 				numInteraction = 1;
 			}
-				
-
-			
 
 		}
 
@@ -141,12 +161,46 @@ public class Logic {
 
 	public void clickMouses() {
 
-			if (app.mouseX < 1030 && app.mouseX > 294 && app.mouseY < 682 && app.mouseY > 294) {
-				if (mousesClickable && guitarClickable == false) {
-					numInteraction = 2;
-				}
-				
+		if (app.mouseX < 1030 && app.mouseX > 294 && app.mouseY < 682 && app.mouseY > 294) {
+			if (mousesClickable && guitarClickable == false) {
+				numInteraction = 2;
+			}
 
+		}
+
+	}
+
+	public void dragCat() {
+
+		if (app.mouseX < 1105 && app.mouseX > 927 && app.mouseY < 720 && app.mouseY > 0) {
+			if (momCat.isCatDrag() && guitarClickable == false && mousesClickable == false) {
+
+				momCat.catDrag();
+				System.out.println("drag");
+				momCat.setPosX(app.mouseX);
+				momCat.setPosY(app.mouseY);
+				// numInteraction = 3;
+			}
+
+		}
+
+	}
+
+	private void changeSizeTadpole() {
+
+		if (app.mouseX < 1105 && app.mouseX > 927 && app.mouseY < 640 && app.mouseY > 406) {
+			tadpole.setShow(true);
+
+		}
+
+	}
+
+	public void clickTadpole() {
+
+		if (app.mouseX < 1105 && app.mouseX > 927 && app.mouseY < 640 && app.mouseY > 406) {
+			if (tadpoleClickable) {
+				num5 = 2;
+			}
 
 		}
 
@@ -156,8 +210,9 @@ public class Logic {
 		newText = app.createWriter("./TXT/newStory.txt");
 
 		for (int i = 0; i < storyList.size(); i++) {
-			if (storyList.get(i).equals("music") || storyList.get(i).equals("dancing,") || storyList.get(i).equals("Cat")
-					|| storyList.get(i).equals("Rinrin") || storyList.get(i).equals("hat")) {
+			if (storyList.get(i).equals("music") || storyList.get(i).equals("dancing,")
+					|| storyList.get(i).equals("Cat") || storyList.get(i).equals("Rinrin")
+					|| storyList.get(i).equals("hat")) {
 				newText.println(storyList.get(i).toUpperCase());
 			} else {
 				newText.println(storyList.get(i));
@@ -176,7 +231,12 @@ public class Logic {
 		this.numInteraction = numInteraction;
 	}
 
+	public boolean isCatDragged() {
+		return catDragged;
+	}
 
-	
+	public void setCatDragged(boolean catDragged) {
+		this.catDragged = catDragged;
+	}
 
 }

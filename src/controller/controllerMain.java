@@ -28,6 +28,19 @@ public class ControllerMain {
 		numInteraction = logic.getNumInteraction();
 	}
 	
+	public void catDrag() {
+		logic.dragCat();
+		numInteraction = logic.getNumInteraction();
+	}
+	
+	public void fifthScreen() {
+		logic.fifthScreen();
+	}
+	
+	public void clickTadpole() {
+		logic.clickTadpole();
+	}
+	
 	public void saveText () {
 		System.out.println("Save text");
 		logic.saveText();

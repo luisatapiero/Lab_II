@@ -35,7 +35,15 @@ public class StoryScreen {
 		}
 		return false;
 	}
+	
+	public void doorBackground() {
+		
+	}
 
+	public void forestBackground() {
+		
+	}
+	
 	public PImage getImgStoryScreen() {
 		return imgStoryScreen;
 	}
